@@ -1,26 +1,25 @@
-package com.example.calculator_app_kotlin
+package com.example.calculator_kotlin
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.example.calculator_kotlin.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var operationClicked = false
-    var equalisClicked = false
+
+    private var operationClicked = false
+    private var equalisClicked = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
     }
 
     fun equalClicked(view: View){
-      //  if (textOperation.text.toString().equals("+"))
-       //     textFirstArgument.text = (textFirstArgument.text.toString().toDouble() + textSecondArgument.text.toString().toDouble()) as String
+        //  if (textOperation.text.toString().equals("+"))
+        //     textFirstArgument.text = (textFirstArgument.text.toString().toDouble() + textSecondArgument.text.toString().toDouble()) as String
         when (textOperation.text.toString()){
             "+" -> textFirstArgument.text = (textFirstArgument.text.toString().toDouble() + textSecondArgument.text.toString().toDouble()).toString()
             "-" -> textFirstArgument.text = (textFirstArgument.text.toString().toDouble() - textSecondArgument.text.toString().toDouble()).toString()
@@ -35,12 +34,13 @@ class MainActivity : AppCompatActivity() {
 
     fun operationClick(view: View){
         if (textFirstArgument.text.isNotEmpty()){
-        var button = view as TextView
-        operationClicked = true
-        textOperation.text = button.text.toString()
+            var button = view as TextView
+            operationClicked = true
+            textOperation.text = button.text.toString()
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun numClick(view: View) {
         var button: TextView = view as TextView
         if (!operationClicked) {
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             }
             else{
                 btnNegative.setOnClickListener(){
-                textFirstArgument.text = (textFirstArgument.text.toString().toDouble() * (-1)).toString()
+                    textFirstArgument.text = (textFirstArgument.text.toString().toDouble() * (-1)).toString()
                 }
             }
             textFirstArgument.text = textFirstArgument.text.toString() + button.text.toString()
@@ -70,7 +70,4 @@ class MainActivity : AppCompatActivity() {
         textOperation.text=""
     }
 
-
 }
-
-
